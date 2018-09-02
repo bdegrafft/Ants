@@ -1,6 +1,5 @@
 import numpy as np
 import pantograph
-import random
 
 class entity(object):
     def __init__(self,loc):
@@ -8,15 +7,15 @@ class entity(object):
         self.loc=loc
         self.x=loc[0]
         self.y=loc[1]
-        self.color=f"#{random.randint(0,9)}{random.randint(0,9)}{random.randint(0,9)}"
-        self.guiObject=pantograph.Rect(self.x*5, self.y*5, 5, 5, fill_color = self.color, line_color = "#000")
+        self.color="#800"
+        self.guiObject=pantograph.Rect(self.x*5, self.y*5, 5, 5, fill_color = self.color, line_color = None)
 
 class AntFarm():
-    def __init__(self):
+    def __init__(self,height,width):
         self.objectRefDict={}
-        self.arr = np.zeros((50, 50), dtype = np.int64)
-        for x in range(50):
-            for y in range(50):
+        self.arr = np.zeros((height, width), dtype = np.int64)
+        for x in range(height):
+            for y in range(width):
                 e = entity((x, y))
                 self.objectRefDict[id(e)] = e
                 self.arr[x, y] = id(e)

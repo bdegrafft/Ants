@@ -5,11 +5,11 @@ import simulate
 
 class AntCanvas(pantograph.PantographHandler):
     def setup(self):
-        self.farm=simulate.AntFarm()
+        self.height, self.width = 1000, 100
+        self.farm=simulate.AntFarm(self.height,self.width)
         self.on_mouse_down = self.test
-        self.height,self.width=100,100
-        for x in range(50):
-            for y in range(50):
+        for x in range(self.height):
+            for y in range(self.width):
                 self.farm[x,y].guiObject.draw(self)
     def update(self):
         pass
